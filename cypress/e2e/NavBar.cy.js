@@ -4,7 +4,6 @@ const largeMenuSelector = '[data-testid="large-menu"]';
 describe("NavBar", () => {
   it("visits the app root url", () => {
     cy.visit("/");
-    cy.contains("h1", "You did it!");
   });
 
   it("renders the logo", () => {
@@ -36,5 +35,26 @@ describe("NavBar", () => {
     cy.get('[data-testid="large-menu-option-characters"]').should("be.visible");
     cy.get('[data-testid="large-menu-option-locations"]').should("be.visible");
     cy.get('[data-testid="large-menu-option-episodes"]').should("be.visible");
+  });
+
+  it("visits the Characters root url", () => {
+    cy.get('[data-testid="large-menu-option-characters"]').click();
+    cy.contains("h1", "Characters");
+  });
+
+  it("visits the Locations root url", () => {
+    cy.get('[data-testid="large-menu-option-locations"]').click();
+    cy.contains("h1", "Locations");
+  });
+
+  it("visits the Episodes root url", () => {
+    cy.get('[data-testid="large-menu-option-episodes"]').click();
+    cy.contains("h1", "Episodes");
+  });
+
+  it("visits the Home root url", () => {
+    cy.get('[data-testid="menu-option-home"]').click();
+    cy.contains("h1", "Rick and morty");
+    cy.contains("h2", "Vue 3 + Composition API");
   });
 });

@@ -19,7 +19,9 @@ const toggleMenu = () => {
 <template>
   <nav class="navbar">
     <div data-testid="logo" class="logo">
-      <img src="/imgLogo.png" alt="Rick and morty" />
+      <router-link data-testid="menu-option-home" :to="{ name: 'home' }">
+        <img src="/imgLogo.png" alt="Rick and morty" />
+      </router-link>
     </div>
     <ul @click="toggleMenu" data-testid="toggle-menu" class="toggle-menu">
       <li></li>
@@ -27,14 +29,26 @@ const toggleMenu = () => {
       <li></li>
     </ul>
     <ul data-testid="large-menu" class="large-menu">
-      <li data-testid="large-menu-option-characters" class="large-menu-option">
-        Characters
+      <li class="large-menu-option">
+        <router-link
+          data-testid="large-menu-option-characters"
+          :to="{ name: 'characters' }"
+          >Characters</router-link
+        >
       </li>
-      <li data-testid="large-menu-option-locations" class="large-menu-option">
-        Locations
+      <li class="large-menu-option">
+        <router-link
+          data-testid="large-menu-option-locations"
+          :to="{ name: 'locations' }"
+          >Locations</router-link
+        >
       </li>
-      <li data-testid="large-menu-option-episodes" class="large-menu-option">
-        Episodes
+      <li class="large-menu-option">
+        <router-link
+          data-testid="large-menu-option-episodes"
+          :to="{ name: 'episodes' }"
+          >Episodes</router-link
+        >
       </li>
     </ul>
   </nav>
