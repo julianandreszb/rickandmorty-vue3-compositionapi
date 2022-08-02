@@ -9,6 +9,8 @@ const props = defineProps({
   },
 });
 const isMenuOpen = ref(props.isMenuOpen);
+import MenuBase from "@/components/menus/MenuBase.vue";
+import { menuOptions } from "@/components/menus/menu.config";
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -28,33 +30,11 @@ const toggleMenu = () => {
       <li></li>
       <li></li>
     </ul>
-    <ul data-testid="large-menu" class="large-menu">
-      <li class="large-menu-option">
-        <router-link
-          data-testid="large-menu-option-characters"
-          :to="{ name: 'characters' }"
-          >Characters</router-link
-        >
-      </li>
-      <li class="large-menu-option">
-        <router-link
-          data-testid="large-menu-option-locations"
-          :to="{ name: 'locations' }"
-          >Locations</router-link
-        >
-      </li>
-      <li class="large-menu-option">
-        <router-link
-          data-testid="large-menu-option-episodes"
-          :to="{ name: 'episodes' }"
-          >Episodes</router-link
-        >
-      </li>
-    </ul>
+    <menu-base data-testid="menu-base" :options="menuOptions" />
   </nav>
 </template>
 
-<style>
+<style scoped>
 .navbar {
   display: flex;
   height: 6rem;
@@ -97,7 +77,7 @@ const toggleMenu = () => {
 .toggle-menu:hover > li {
   background-color: #49b4c9;
 }
-.large-menu {
+.menu-container {
   display: none;
 }
 
@@ -105,19 +85,19 @@ const toggleMenu = () => {
   .toggle-menu {
     display: none;
   }
-  .large-menu {
+  .menu-container {
     display: flex;
     gap: 0.5rem;
     margin-right: 1rem;
   }
-  .large-menu > li {
+  .menu-container > li {
     height: 3rem;
     color: #19a0fb;
     padding: 0 2rem;
     font-weight: 800;
     cursor: pointer;
   }
-  .large-menu > li:hover {
+  .menu-container > li:hover {
     color: #5ec4ff;
   }
 }

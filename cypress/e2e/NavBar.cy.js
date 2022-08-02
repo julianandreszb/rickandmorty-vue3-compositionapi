@@ -1,5 +1,5 @@
 const toggleMenuSelector = '[data-testid="toggle-menu"]';
-const largeMenuSelector = '[data-testid="large-menu"]';
+const expandedMenuSelector = '[data-testid="menu-base"]';
 
 describe("NavBar", () => {
   it("visits the app root url", () => {
@@ -22,33 +22,33 @@ describe("NavBar", () => {
 
   it("should not render the expanded menu when the screen is smaller than 768x", () => {
     cy.viewport("iphone-3"); // iphone-3 320*480
-    cy.get(largeMenuSelector).should("not.be.visible");
+    cy.get(expandedMenuSelector).should("not.be.visible");
   });
 
   it("should render the expanded menu when the screen is bigger than or equals to 768x", () => {
     cy.viewport("ipad-mini"); // ipad-mini	768	1024
-    cy.get(largeMenuSelector).should("be.visible");
+    cy.get(expandedMenuSelector).should("be.visible");
   });
 
   it("should render the expanded menu options when the screen is bigger than or equals to 768x", () => {
     cy.viewport("ipad-mini"); // ipad-mini	768	1024
-    cy.get('[data-testid="large-menu-option-characters"]').should("be.visible");
-    cy.get('[data-testid="large-menu-option-locations"]').should("be.visible");
-    cy.get('[data-testid="large-menu-option-episodes"]').should("be.visible");
+    cy.get('[data-testid="menu-option-characters"]').should("be.visible");
+    cy.get('[data-testid="menu-option-locations"]').should("be.visible");
+    cy.get('[data-testid="menu-option-episodes"]').should("be.visible");
   });
 
   it("visits the Characters root url", () => {
-    cy.get('[data-testid="large-menu-option-characters"]').click();
+    cy.get('[data-testid="menu-option-characters"]:visible').click();
     cy.contains("h1", "Characters");
   });
 
   it("visits the Locations root url", () => {
-    cy.get('[data-testid="large-menu-option-locations"]').click();
+    cy.get('[data-testid="menu-option-locations"]:visible').click();
     cy.contains("h1", "Locations");
   });
 
   it("visits the Episodes root url", () => {
-    cy.get('[data-testid="large-menu-option-episodes"]').click();
+    cy.get('[data-testid="menu-option-episodes"]:visible').click();
     cy.contains("h1", "Episodes");
   });
 
