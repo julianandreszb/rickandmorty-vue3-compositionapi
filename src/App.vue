@@ -1,13 +1,19 @@
 <script setup>
 import { RouterView } from "vue-router";
+import { ref, computed } from "vue";
 import NavBar from "@/components/menus/NavBar.vue";
 import SlideMenu from "@/components/menus/SlideMenu.vue";
-import { ref } from "vue";
 
 const openSlideMenu = ref(false);
 const onMenuOpen = (isMenuOpen) => {
   openSlideMenu.value = isMenuOpen;
 };
+const backdropClass = computed(() => {
+  return {
+    backdrop: openSlideMenu.value,
+    "backdrop-inactive": !openSlideMenu.value,
+  };
+});
 </script>
 
 <template>
@@ -21,9 +27,7 @@ const onMenuOpen = (isMenuOpen) => {
     <!-- END SLIDE MENU -->
 
     <!-- MAIN SECTION -->
-    <div>
-      <RouterView />
-    </div>
+    <RouterView :class="backdropClass" />
     <!-- END MAIN SECTION -->
 
     <!-- SECTION FOOTER -->
@@ -31,4 +35,4 @@ const onMenuOpen = (isMenuOpen) => {
   </div>
 </template>
 
-<style scoped></style>
+<style></style>

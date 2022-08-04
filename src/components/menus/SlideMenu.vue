@@ -33,6 +33,7 @@ const slideMenuClass = computed(() => {
   height: 100vh;
   width: 50%;
   min-width: 120px;
+  z-index: 8;
 }
 
 .slideMenu.active {
