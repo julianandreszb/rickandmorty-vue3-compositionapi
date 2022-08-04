@@ -22,14 +22,33 @@ const slideMenuClass = computed(() => {
 
 <style scoped>
 .slideMenu {
-  width: 10rem;
-  height: 100vh;
-}
-.active {
+  position: fixed;
+  background-color: #ffffff;
+  top: 6rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -0.3rem 0.4rem 0.6rem rgba(0, 0, 0, 0.3);
+  height: 100vh;
+  width: 50%;
+  min-width: 120px;
 }
-.inactive {
-  display: none;
+
+.slideMenu.active {
+  transform: translatex(100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.slideMenu.inactive {
+  transform: translatex(200%);
+  box-shadow: 0 0;
+  transition: transform 0.5s ease-in-out 0.2s, box-shadow 1s;
+}
+
+@media (min-width: 768px) {
+  .slideMenu {
+    display: none;
+  }
 }
 </style>

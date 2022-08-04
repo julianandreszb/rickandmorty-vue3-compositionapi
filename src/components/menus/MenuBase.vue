@@ -14,11 +14,25 @@ const props = defineProps({
       :class="item.class"
       :key="item.to.name"
     >
-      <router-link :data-testid="`menu-option-${item.to.name}`" :to="item.to">{{
-        item.label
-      }}</router-link>
+      <router-link :data-testid="`menu-option-${item.to.name}`" :to="item.to"
+        >{{ item.label }}
+      </router-link>
     </li>
   </ul>
 </template>
 
-<style scoped></style>
+<style scoped>
+.menu-option {
+  margin: 4rem;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+li > a:visited {
+  color: #19a0fb;
+}
+
+li > a:hover {
+  color: #0062a2;
+}
+</style>

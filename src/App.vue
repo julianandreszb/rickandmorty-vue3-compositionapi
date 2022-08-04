@@ -6,9 +6,7 @@ import { ref } from "vue";
 
 const openSlideMenu = ref(false);
 const onMenuOpen = (isMenuOpen) => {
-  console.log("App:9 isMenuOpen", isMenuOpen);
   openSlideMenu.value = isMenuOpen;
-  console.log("App:11 openSlideMenu", openSlideMenu.value);
 };
 </script>
 
@@ -23,7 +21,9 @@ const onMenuOpen = (isMenuOpen) => {
     <!-- END SLIDE MENU -->
 
     <!-- MAIN SECTION -->
-    <RouterView />
+    <div>
+      <RouterView />
+    </div>
     <!-- END MAIN SECTION -->
 
     <!-- SECTION FOOTER -->

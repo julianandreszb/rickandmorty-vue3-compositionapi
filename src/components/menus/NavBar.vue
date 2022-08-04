@@ -36,18 +36,22 @@ const toggleMenu = () => {
 
 <style scoped>
 .navbar {
+  background-color: #ffffff;
   display: flex;
   height: 6rem;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
   font-size: 2rem;
+  z-index: 10;
 }
+
 .logo {
   width: 16rem;
   padding: 0 1rem;
   cursor: pointer;
 }
+
 .logo img {
   width: 100%;
 }
@@ -60,23 +64,29 @@ const toggleMenu = () => {
   margin-right: 1rem;
   cursor: pointer;
 }
+
 .toggle-menu li {
   height: 0.5rem;
-  background-color: #2e8840;
+  background-color: #19a0fb;
   border-radius: 0.2rem;
 }
+
 .toggle-menu li:nth-child(1) {
   width: 3rem;
 }
+
 .toggle-menu li:nth-child(2) {
   width: 2.5rem;
 }
+
 .toggle-menu li:nth-child(3) {
   width: 2rem;
 }
+
 .toggle-menu:hover > li {
-  background-color: #49b4c9;
+  background-color: #0062a2;
 }
+
 .menu-container {
   display: none;
 }
@@ -85,11 +95,13 @@ const toggleMenu = () => {
   .toggle-menu {
     display: none;
   }
+
   .menu-container {
     display: flex;
     gap: 0.5rem;
     margin-right: 1rem;
   }
+
   .menu-container > li {
     height: 3rem;
     color: #19a0fb;
@@ -97,6 +109,7 @@ const toggleMenu = () => {
     font-weight: 800;
     cursor: pointer;
   }
+
   .menu-container > li:hover {
     color: #5ec4ff;
   }
