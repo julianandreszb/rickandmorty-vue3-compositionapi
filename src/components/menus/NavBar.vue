@@ -44,6 +44,10 @@ const toggleMenu = () => {
   box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
   font-size: 2rem;
   z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .logo {
