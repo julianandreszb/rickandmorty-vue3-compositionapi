@@ -10,7 +10,6 @@
 
 <style>
 .main {
-  margin-top: 6rem;
   height: 90vh;
   display: flex;
   flex-direction: column;

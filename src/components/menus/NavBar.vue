@@ -1,7 +1,9 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import MenuBase from "@/components/menus/MenuBase.vue";
+import { menuOptions } from "@/components/menus/menu.config";
 
-const emit = defineEmits(["isMenuOpen"]);
+const emit = defineEmits(["onToggleMenu"]);
 const props = defineProps({
   isMenuOpen: {
     type: Boolean,
@@ -9,12 +11,17 @@ const props = defineProps({
   },
 });
 const isMenuOpen = ref(props.isMenuOpen);
-import MenuBase from "@/components/menus/MenuBase.vue";
-import { menuOptions } from "@/components/menus/menu.config";
+
+watch(
+  () => props.isMenuOpen,
+  (newIsMenuOpenValue) => {
+    isMenuOpen.value = newIsMenuOpenValue;
+  }
+);
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
-  emit("isMenuOpen", isMenuOpen.value);
+  emit("onToggleMenu", isMenuOpen.value);
 };
 </script>
 
