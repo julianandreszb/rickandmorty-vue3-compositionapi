@@ -3,7 +3,6 @@ import { RouterView } from "vue-router";
 import { computed, ref } from "vue";
 import NavBar from "@/components/menus/NavBar.vue";
 import SlideMenu from "@/components/menus/SlideMenu.vue";
-
 const isMenuOpen = ref(false);
 const toggleMenu = (value) => {
   isMenuOpen.value = value;
@@ -27,7 +26,13 @@ const backdropClass = computed(() => {
     <!-- END SLIDE MENU -->
 
     <!-- MAIN SECTION -->
-    <RouterView :class="backdropClass" />
+    <transition name="slide" mode="out-in">
+      <router-view v-slot="{ Component }">
+        <transition name="slide" mode="out-in">
+          <component :class="backdropClass" :is="Component"></component>
+        </transition>
+      </router-view>
+    </transition>
     <!-- END MAIN SECTION -->
 
     <!-- SECTION FOOTER -->
@@ -35,4 +40,13 @@ const backdropClass = computed(() => {
   </div>
 </template>
 
-<style></style>
+<style scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.3s;
+}
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+}
+</style>

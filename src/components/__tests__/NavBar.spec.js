@@ -26,7 +26,7 @@ describe("NavBar", () => {
     toggleManuElement.trigger("click");
     toggleManuElement.trigger("click");
 
-    const isMenuOpenCall = wrapper.emitted("isMenuOpen");
+    const isMenuOpenCall = wrapper.emitted("onToggleMenu");
     expect(isMenuOpenCall).lengthOf(2);
     expect(isMenuOpenCall[0][0]).eq(true);
     expect(isMenuOpenCall[1][0]).eq(false);
