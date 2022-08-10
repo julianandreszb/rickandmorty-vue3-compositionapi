@@ -1,21 +1,44 @@
 <script setup>
 import MenuBase from "@/components/menus/MenuBase.vue";
 import { menuOptions } from "@/components/menus/menu.config";
-import { computed } from "vue";
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
 
+const emit = defineEmits(["onSlideMenuOptionSelected"]);
 const props = defineProps({
-  openSlideMenu: {
+  isSlideMenuOpen: {
     type: Boolean,
     default: false,
   },
 });
-const slideMenuClass = computed(() => {
-  return { active: props.openSlideMenu, inactive: !props.openSlideMenu };
-});
+const route = useRoute();
+
+const isSlideMenuOpenRef = ref(props.isSlideMenuOpen);
+
+watch(
+  () => props.isSlideMenuOpen,
+  (newOpenSlideMenuValue) => {
+    isSlideMenuOpenRef.value = newOpenSlideMenuValue;
+  }
+);
+
+watch(
+  () => route.path,
+  (newRoutePath, oldRoutePath) => {
+    if (newRoutePath !== oldRoutePath) {
+      isSlideMenuOpenRef.value = false;
+      emit("onSlideMenuOptionSelected", isSlideMenuOpenRef.value);
+    }
+  }
+);
 </script>
 
 <template>
-  <div data-testid="slide-menu" :class="slideMenuClass" class="slideMenu">
+  <div
+    data-testid="slide-menu"
+    :class="{ open: isSlideMenuOpen, close: !isSlideMenuOpen }"
+    class="slideMenu"
+  >
     <menu-base data-testid="slide-menu-base" :options="menuOptions" />
   </div>
 </template>
@@ -36,12 +59,12 @@ const slideMenuClass = computed(() => {
   z-index: 8;
 }
 
-.slideMenu.active {
+.slideMenu.open {
   transform: translatex(100%);
   transition: transform 0.5s ease-in-out;
 }
 
-.slideMenu.inactive {
+.slideMenu.close {
   transform: translatex(200%);
   box-shadow: 0 0;
   transition: transform 0.5s ease-in-out 0.2s, box-shadow 1s;

@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { mount } from "@vue/test-utils";
 import NavBar from "@/components/menus/NavBar.vue";
 import { createRouter, createWebHistory } from "vue-router";
@@ -26,7 +26,7 @@ describe("NavBar", () => {
     toggleManuElement.trigger("click");
     toggleManuElement.trigger("click");
 
-    const isMenuOpenCall = wrapper.emitted("isMenuOpen");
+    const isMenuOpenCall = wrapper.emitted("onToggleMenu");
     expect(isMenuOpenCall).lengthOf(2);
     expect(isMenuOpenCall[0][0]).eq(true);
     expect(isMenuOpenCall[1][0]).eq(false);

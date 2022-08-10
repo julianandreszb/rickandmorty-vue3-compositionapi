@@ -26,11 +26,11 @@ afterEach(() => {
 
 describe("SlideMenu", () => {
   it("shows the component based on a property", async () => {
-    await wrapper.setProps({ openSlideMenu: true });
-    expect(wrapper.classes()).contains("active");
+    await wrapper.setProps({ isSlideMenuOpen: true });
+    expect(wrapper.classes()).contains("open");
   });
   it("hides the component based on a property", async () => {
     await wrapper.setProps({ isSlideMenuOpen: false });
-    expect(wrapper.classes()).contains("inactive");
+    expect(wrapper.classes()).contains("close");
   });
 });

@@ -1,33 +1,36 @@
 <script setup>
 import { RouterView } from "vue-router";
-import { ref, computed } from "vue";
+import { computed, ref } from "vue";
 import NavBar from "@/components/menus/NavBar.vue";
 import SlideMenu from "@/components/menus/SlideMenu.vue";
-
-const openSlideMenu = ref(false);
-const onMenuOpen = (isMenuOpen) => {
-  openSlideMenu.value = isMenuOpen;
+const isMenuOpen = ref(false);
+const toggleMenu = (value) => {
+  isMenuOpen.value = value;
 };
 const backdropClass = computed(() => {
-  return {
-    backdrop: openSlideMenu.value,
-    "backdrop-inactive": !openSlideMenu.value,
-  };
+  return isMenuOpen.value ? { backdrop: true } : { "backdrop-inactive": true };
 });
 </script>
 
 <template>
   <div class="container">
     <!-- NAVBAR -->
-    <nav-bar @isMenuOpen="onMenuOpen" />
+    <nav-bar :is-menu-open="isMenuOpen" @onToggleMenu="toggleMenu" />
     <!-- END NAVBAR -->
 
     <!-- SLIDE MENU -->
-    <slide-menu :open-slide-menu="openSlideMenu" />
+    <slide-menu
+      @onSlideMenuOptionSelected="toggleMenu"
+      :is-slide-menu-open="isMenuOpen"
+    />
     <!-- END SLIDE MENU -->
 
     <!-- MAIN SECTION -->
-    <RouterView :class="backdropClass" />
+    <router-view v-slot="{ Component }">
+      <transition name="slide" mode="out-in">
+        <component :class="backdropClass" :is="Component"></component>
+      </transition>
+    </router-view>
     <!-- END MAIN SECTION -->
 
     <!-- SECTION FOOTER -->
@@ -35,4 +38,13 @@ const backdropClass = computed(() => {
   </div>
 </template>
 
-<style></style>
+<style scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.3s;
+}
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+}
+</style>
