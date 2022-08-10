@@ -26,13 +26,11 @@ const backdropClass = computed(() => {
     <!-- END SLIDE MENU -->
 
     <!-- MAIN SECTION -->
-    <transition name="slide" mode="out-in">
-      <router-view v-slot="{ Component }">
-        <transition name="slide" mode="out-in">
-          <component :class="backdropClass" :is="Component"></component>
-        </transition>
-      </router-view>
-    </transition>
+    <router-view v-slot="{ Component }">
+      <transition name="slide" mode="out-in">
+        <component :class="backdropClass" :is="Component"></component>
+      </transition>
+    </router-view>
     <!-- END MAIN SECTION -->
 
     <!-- SECTION FOOTER -->

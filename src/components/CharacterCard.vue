@@ -48,7 +48,8 @@ const props = defineProps({
 }
 
 .character-card-item h2 {
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 800;
 }
 
 .character-card-item h3 {
@@ -85,7 +86,7 @@ const props = defineProps({
   .character-card-item {
     flex-direction: row;
     max-height: 22rem;
-    max-width: 50rem;
+    max-width: 55rem;
   }
 
   .character-image {
