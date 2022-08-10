@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { mount } from "@vue/test-utils";
 import NavBar from "@/components/menus/NavBar.vue";
 import { createRouter, createWebHistory } from "vue-router";

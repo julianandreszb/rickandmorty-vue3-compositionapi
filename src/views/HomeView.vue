@@ -18,7 +18,7 @@
 }
 
 .mainLogo {
-  height: 50%;
+  height: 30%;
 }
 
 h1 {
@@ -39,6 +39,10 @@ h2 {
   h2 {
     font-size: 2.5rem;
   }
+
+  .mainLogo {
+    height: 45%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -49,6 +53,10 @@ h2 {
   h2 {
     font-size: 3rem;
   }
+
+  .mainLogo {
+    height: 60%;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -58,6 +66,9 @@ h2 {
 
   h2 {
     font-size: 3.5rem;
+  }
+  .mainLogo {
+    height: 70%;
   }
 }
 </style>
