@@ -18,7 +18,6 @@ const isLoading = ref(true);
 
 onMounted(async () => {
   state.locations = await getLocations();
-  console.dir(state.locations);
   isLoading.value = false;
   totalPages.value = state.locations.info.pages;
 });
