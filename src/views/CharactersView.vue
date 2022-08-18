@@ -74,7 +74,6 @@ const pageChangeHandler = async (page) => {
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: chartreuse;
   justify-content: center;
   align-items: center;
 }
