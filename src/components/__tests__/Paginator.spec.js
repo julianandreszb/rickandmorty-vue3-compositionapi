@@ -2,6 +2,8 @@ import { describe, it, expect, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 import Paginator from "@/components/Paginator.vue";
 
+window.scrollTo = vi.fn(); // Disable Error: Not implemented: window.scrollTo
+
 describe("Paginator", () => {
   it("should not render the Prev button on the first page", () => {
     const wrapper = mount(Paginator, {
@@ -10,7 +12,9 @@ describe("Paginator", () => {
         pages: 42,
       },
     });
-    expect(wrapper.find('[data-testid="prev-button"]').isVisible()).eq(false);
+    expect(wrapper.find('[data-testid="prev-button"]').classes()).contains(
+      "invisible"
+    );
   });
 
   it("should render the Prev button when the page is greater than or equal to two", () => {
@@ -30,7 +34,9 @@ describe("Paginator", () => {
         pages: 42,
       },
     });
-    expect(wrapper.find('[data-testid="next-button"]').isVisible()).eq(false);
+    expect(wrapper.find('[data-testid="next-button"]').classes()).contains(
+      "invisible"
+    );
   });
 
   it("should render the Next button when the page is smaller than the last page", () => {
@@ -84,7 +90,14 @@ describe("Paginator", () => {
   });
 
   it("should open a page selector dialog when currentPage element is clicked", () => {
-    expect(false).eq(true);
+    const wrapper = mount(Paginator, {
+      props: {
+        startPage: 30,
+        pages: 42,
+      },
+    });
+    wrapper.find('[data-testid="current-page"]').trigger("click");
+    expect(wrapper.find('[data-testid="page-selector"]').isVisible()).eq(true);
   });
 
   // it("should show the current page selected by default on the page selector dialog", () => {

@@ -14,10 +14,11 @@ const state = reactive({
 
 const totalPages = ref(0);
 const currentPage = ref(1);
-const isLoading = ref(false);
+const isLoading = ref(true);
 
 onMounted(async () => {
   state.characters = await getCharacters();
+  isLoading.value = false;
   totalPages.value = state.characters.info.pages;
 });
 

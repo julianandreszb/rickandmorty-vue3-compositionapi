@@ -109,7 +109,11 @@ const mouseDownHandler = (e) => {
         Next
       </button>
     </div>
-    <div class="page-selector" :class="pageSelectorClass">
+    <div
+      data-testid="page-selector"
+      class="page-selector"
+      :class="pageSelectorClass"
+    >
       <div class="page-selector-options">
         <p>Select Page</p>
         <button class="cancel-button" @click="hidePageSelector">Cancel</button>
@@ -214,6 +218,7 @@ const mouseDownHandler = (e) => {
   gap: 1rem;
   height: 4rem;
   background-color: #5ec4ff;
+  padding-right: 1rem;
 }
 
 .page-selector-options > p {
