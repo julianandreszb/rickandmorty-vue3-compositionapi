@@ -2,7 +2,7 @@
 
 <template>
   <main class="main">
-    <img class="mainLogo" src="../../public/mainLogo.png" alt="" />
+    <img class="mainLogo" src="/mainLogo.png" alt="" />
     <h1>Rick and morty</h1>
     <h2>Vue 3 + Composition API</h2>
   </main>
