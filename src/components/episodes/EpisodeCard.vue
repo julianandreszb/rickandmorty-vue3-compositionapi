@@ -19,7 +19,7 @@ const getEpisodeFromEpisodeName = (episodeName) => {
     <div class="episode-image-wrapper">
       <img
         class="episode-image"
-        :src="`/season/${getSeasonFromEpisodeName(props.episode.episode)}.jpg`"
+        :src="`/${getSeasonFromEpisodeName(props.episode.episode)}.jpg`"
         :alt="props.episode.name"
       />
     </div>
