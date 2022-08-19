@@ -5,7 +5,7 @@ import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/<REPO>/",
+  base: "/rickandmorty-vue3-compositionapi/",
   plugins: [vue()],
   resolve: {
     alias: {
