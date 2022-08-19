@@ -1,11 +1,6 @@
 const BASE_URL = "https://rickandmortyapi.com/api";
 const CHARACTERS_ENDPOINT = "/character";
-const CHARACTERS_LOCATION = "/location";
-const CHARACTERS_EPISODE = "/episode";
+const LOCATIONS_ENDPOINT = "/location";
+const EPISODES_ENDPOINT = "/episode";
 
-export {
-  BASE_URL,
-  CHARACTERS_ENDPOINT,
-  CHARACTERS_LOCATION,
-  CHARACTERS_EPISODE,
-};
+export { BASE_URL, CHARACTERS_ENDPOINT, LOCATIONS_ENDPOINT, EPISODES_ENDPOINT };

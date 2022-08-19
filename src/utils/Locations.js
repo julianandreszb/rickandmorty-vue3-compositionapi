@@ -1,9 +1,9 @@
 import { Client } from "@/utils/Client";
-import { BASE_URL, CHARACTERS_LOCATION } from "@/utils/ApiConfig";
+import { BASE_URL, LOCATIONS_ENDPOINT } from "@/utils/ApiConfig";
 
 const getLocations = (page = 1) => {
   const client = new Client(BASE_URL);
-  return client.get(`${CHARACTERS_LOCATION}?page=${page}`);
+  return client.get(`${LOCATIONS_ENDPOINT}?page=${page}`);
 };
 
 export { getLocations };

@@ -1,43 +1,54 @@
 <script setup>
 const props = defineProps({
-  location: {
+  episode: {
     required: true,
     type: Object,
   },
 });
+
+const getSeasonFromEpisodeName = (episodeName) => {
+  return episodeName.match(/(?!x)[0-9]+/g)[0];
+};
+const getEpisodeFromEpisodeName = (episodeName) => {
+  return episodeName.match(/(?!x)[0-9]+/g)[1];
+};
 </script>
 
 <template>
-  <article class="location-card-item">
-    <div class="location-image-wrapper">
+  <article class="episode-card-item">
+    <div class="episode-image-wrapper">
       <img
-        class="location-image"
-        src="/portal.png"
-        :alt="props.location.name"
+        class="episode-image"
+        :src="`/season/${getSeasonFromEpisodeName(props.episode.episode)}.jpg`"
+        :alt="props.episode.name"
       />
     </div>
-    <div class="location-info">
+    <div class="episode-info">
       <div>
-        <h2 data-testid="name">{{ props.location.name }}</h2>
+        <h2 data-testid="name">{{ props.episode.name }}</h2>
       </div>
       <div>
-        <h3 class="character-description">Dimension:</h3>
-        <a data-testid="location-name">{{ props.location.dimension }}</a>
+        <h3 class="character-description">Air Date:</h3>
+        <a data-testid="episode-name">{{ props.episode.air_date }}</a>
       </div>
       <div>
-        <h3 class="character-description">Type:</h3>
-        <a data-testid="location-name">{{ props.location.type }}</a>
+        <h3 class="character-description">Season:</h3>
+        <a data-testid="episode-name">{{
+          getSeasonFromEpisodeName(props.episode.episode)
+        }}</a>
       </div>
       <div>
-        <h3 class="character-description">Residents:</h3>
-        <a data-testid="location-name">{{ props.location.residents.length }}</a>
+        <h3 class="character-description">Episode:</h3>
+        <a data-testid="episode-name">{{
+          getEpisodeFromEpisodeName(props.episode.episode)
+        }}</a>
       </div>
     </div>
   </article>
 </template>
 
 <style scoped>
-.location-card-item {
+.episode-card-item {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
@@ -46,12 +57,12 @@ const props = defineProps({
   box-shadow: 1px 2px 6px -2px #000000;
 }
 
-.location-card-item h2 {
+.episode-card-item h2 {
   font-size: 2rem;
   font-weight: 800;
 }
 
-.location-card-item h3 {
+.episode-card-item h3 {
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -59,17 +70,17 @@ const props = defineProps({
   color: #9b9b9b;
 }
 
-.location-card-item h3:first-letter {
+.episode-card-item h3:first-letter {
   text-transform: capitalize;
 }
 
-.location-image-wrapper {
+.episode-image-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.location-image {
+.episode-image {
   /*background-image: url("/portal.png");*/
   background-repeat: no-repeat;
   border-radius: 1rem 1rem 0 0;
@@ -78,7 +89,7 @@ const props = defineProps({
   max-width: 160px;
 }
 
-.location-info {
+.episode-info {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -87,19 +98,19 @@ const props = defineProps({
   /*background: url("/portal.png") no-repeat;*/
 }
 
-.location-info a {
+.episode-info a {
   font-size: 1.8rem;
   text-transform: capitalize;
 }
 
 @media (min-width: 480px) {
-  .location-card-item {
+  .episode-card-item {
     flex-direction: row;
     max-height: 22rem;
     max-width: 55rem;
   }
 
-  .location-image {
+  .episode-image {
     border-radius: 1rem 0 0 1rem;
     object-fit: cover;
     height: 100%;
